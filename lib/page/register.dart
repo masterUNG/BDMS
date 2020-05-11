@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myapplication/utility/my_style.dart';
 
@@ -31,7 +32,28 @@ class _RegisterState extends State<Register> {
           userForm(),
           MyStyle().mySizeBox,
           passwordForm(),
+          MyStyle().mySizeBox,
+          showMap(),
         ],
+      ),
+    );
+  }
+
+  Widget showMap() {
+    double lat = 13.683543, lng = 100.591800;
+
+    LatLng latLng = LatLng(lat, lng);
+    CameraPosition cameraPosition = CameraPosition(
+      target: latLng,
+      zoom: 16.0,
+    );
+
+    return Container(
+      height: 150.0,
+      child: GoogleMap(
+        initialCameraPosition: cameraPosition,
+        mapType: MapType.normal,
+        onMapCreated: (controller) {},
       ),
     );
   }
@@ -82,6 +104,7 @@ class _RegisterState extends State<Register> {
           Container(
             width: 250.0,
             child: TextField(
+              onChanged: (value) => name = value.trim(),
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.face),
                 labelText: 'Name :',
@@ -98,6 +121,7 @@ class _RegisterState extends State<Register> {
           Container(
             width: 250.0,
             child: TextField(
+              onChanged: (value) => surName = value.trim(),
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.supervisor_account),
                 labelText: 'Surname :',
@@ -114,6 +138,7 @@ class _RegisterState extends State<Register> {
           Container(
             width: 250.0,
             child: TextField(
+              onChanged: (value) => user = value.trim(),
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.account_box),
                 labelText: 'User :',
@@ -130,6 +155,7 @@ class _RegisterState extends State<Register> {
           Container(
             width: 250.0,
             child: TextField(
+              onChanged: (value) => password = value.trim(),
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
                 labelText: 'Password :',

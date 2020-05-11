@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.flautterthailand.bdms
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
