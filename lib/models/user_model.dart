@@ -13,6 +13,8 @@ class UserModel {
   String email;
   String img;
   String flag;
+  String lat;
+  String lng;
 
   UserModel(
       {this.id,
@@ -28,7 +30,9 @@ class UserModel {
       this.tel,
       this.email,
       this.img,
-      this.flag});
+      this.flag,
+      this.lat,
+      this.lng});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -45,6 +49,8 @@ class UserModel {
     email = json['email'];
     img = json['img'];
     flag = json['flag'];
+    lat = json['Lat'];
+    lng = json['Lng'];
   }
 
   Map<String, dynamic> toJson() {
@@ -63,6 +69,8 @@ class UserModel {
     data['email'] = this.email;
     data['img'] = this.img;
     data['flag'] = this.flag;
+    data['Lat'] = this.lat;
+    data['Lng'] = this.lng;
     return data;
   }
 }
